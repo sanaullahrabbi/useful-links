@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="./src/assets/css/main.css" />
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/build.css"
+            integrity="sha512-oXqkIy/+iqrHrpoTwFkSLZJpNwoYn9e77QtCNzBi+Jb6uJgTtcdHVy0C+nEpeUfC3fxSbydPxLG+ndikNVvrdQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+    </head>
+
+    <body class="w-full">
+        <div id="addLinkFormContainer" class="add-form-container fixed inset-0 z-10 hidden">
+            <div class="overlay grid h-full w-full place-items-center bg-slate-600/50">
+                <form
+                    action=""
+                    id="addLinkForm"
+                    class="add-form relative flex max-w-xl flex-col items-start justify-start gap-4 overflow-hidden rounded border bg-white p-8"
+                >
+                    <span
+                        id="closeAddLinkForm"
+                        class="absolute top-0 right-0 grid aspect-square w-7 cursor-pointer place-items-center border text-lg leading-none"
+                        ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="feather feather-x"
+                        >
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line></svg
+                    ></span>
+                    <div class="field-wrapper">
+                        <label for="">Name</label>
+                        <input type="text" name="name" placeholder="name" required />
+                    </div>
+                    <div class="field-wrapper">
+                        <label for="">Url</label>
+                        <input type="url" name="url" placeholder="url" required />
+                    </div>
+                    <div class="field-wrapper">
+                        <label for="category">Category</label>
+                        <select
+                            name="category"
+                            id="category"
+                            class="w-80 text-sm"
+                            required
+                            multiple="multiple"
+                        ></select>
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="approved" value="true" name="approved" required />
+                        <label for="approved">Approved ?</label>
+                    </div>
+                    <button type="submit" class="mt-2 rounded-sm bg-blue-500 px-3 py-1.5 text-sm text-white">
+                        Add
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div id="addCategoryFormContainer" class="add-form-container fixed inset-0 z-10 hidden">
+            <div class="overlay grid h-full w-full place-items-center bg-slate-600/50">
+                <form
+                    action=""
+                    id="addCategoryForm"
+                    class="add-form relative flex max-w-xl flex-col items-start justify-start gap-4 overflow-hidden rounded border bg-white p-8"
+                >
+                    <span
+                        id="closeAddCategoryForm"
+                        class="absolute top-0 right-0 grid aspect-square w-7 cursor-pointer place-items-center border text-lg leading-none"
+                        ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="feather feather-x"
+                        >
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line></svg
+                    ></span>
+                    <div class="field-wrapper">
+                        <label for="">Name</label>
+                        <input type="text" name="category" placeholder="category name" required />
+                    </div>
+                    <button type="submit" class="mt-2 rounded-sm bg-blue-500 px-3 py-1.5 text-sm text-white">
+                        Add
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="wrapper-main mx-auto h-full max-w-4xl pt-16">
+            <h1 class="mx-auto mb-8 px-4 text-center text-2xl font-bold">Usefull Links for Your Requirements</h1>
+            <div class="mb-8 flex flex-col items-center justify-between gap-4 px-4 md:flex-row md:gap-0 md:px-0">
+                <form action="" class="relative w-full">
+                    <input
+                        type="search"
+                        placeholder="Search Links"
+                        name=""
+                        id=""
+                        class="w-full border-b py-2 px-3 pl-8 outline-none md:w-72"
+                    />
+                    <span class="absolute left-0 top-1/2 inline-block -translate-y-1/2"
+                        ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <path
+                                fill-rule="evenodd"
+                                d="M10.25 2a8.25 8.25 0 105.28 14.59l5.69 5.69a.75.75 0 101.06-1.06l-5.69-5.69A8.25 8.25 0 0010.25 2zM3.5 10.25a6.75 6.75 0 1113.5 0 6.75 6.75 0 01-13.5 0z"
+                            ></path></svg
+                    ></span>
+                </form>
+                <div class="flex gap-2">
+                    <button
+                        id="openLinkAddForm"
+                        class="flex items-center justify-center gap-2 rounded-sm bg-indigo-500 px-3 py-1.5 text-sm text-white"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="#fff">
+                            <path
+                                fill-rule="evenodd"
+                                d="M7.75 2a.75.75 0 01.75.75V7h4.25a.75.75 0 110 1.5H8.5v4.25a.75.75 0 11-1.5 0V8.5H2.75a.75.75 0 010-1.5H7V2.75A.75.75 0 017.75 2z"
+                            ></path>
+                        </svg>
+                        <span class="w-max">Add Link</span>
+                    </button>
+                    <button
+                        id="openCategoryAddForm"
+                        class="flex items-center justify-center gap-2 rounded-sm bg-emerald-500 px-3 py-1.5 text-sm text-white"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="#fff">
+                            <path
+                                fill-rule="evenodd"
+                                d="M7.75 2a.75.75 0 01.75.75V7h4.25a.75.75 0 110 1.5H8.5v4.25a.75.75 0 11-1.5 0V8.5H2.75a.75.75 0 010-1.5H7V2.75A.75.75 0 017.75 2z"
+                            ></path>
+                        </svg>
+                        <span class="w-max">Add Category</span>
+                    </button>
+                </div>
+            </div>
+            <div class="main relative mx-auto flex h-full flex-wrap"></div>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script type="module" src="./main.js"></script>
+</html>
